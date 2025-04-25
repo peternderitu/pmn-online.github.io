@@ -146,4 +146,71 @@ CREATE VIEW view_uk_youtubers_2024 AS
 	total_videos
 	FROM youtube_data_from_python
 ```
+# Testing
+Data quality checks to be performed
 
+## Row count check
+
+```sql
+/*
+
+1. Check if there are 100 channels(row count) -- Passed!!!
+*/ 
+
+-- 1. Row Count
+
+SELECT COUNT(*) AS no_of_rows
+FROM view_uk_youtubers_2024
+```
+![row_count](/assets/images/rowcountcheck.PNG)
+
+## Column count check
+
+```sql
+/*
+
+2. Check if the number of columns are 4 (channel count) -- Passed!!!
+
+*/ 
+SELECT COUNT(*) AS column_count
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'view_uk_youtubers_2024'
+```
+![column_count](/assets/images/columncount check.PNG)
+
+## Data type check
+
+```sql
+/*
+
+3. Check if the data types are string for column_name and the rest are integer columns(data type check) -- Passed!!!
+
+*/
+-- 3. Data type check - 
+		-- channel_name - varchar
+		-- total_subscribers - integer
+		-- total_views - integer
+		-- total_videos - integer
+
+SELECT COLUMN_NAME,DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'view_uk_youtubers_2024'
+```
+![data type](/assets/images/datatypecheck.PNG)
+
+## Duplicate Count Check
+
+```sql
+/*
+
+4. Check if all the channel_name data is unique(unique/distinct check per record) -- Passed!!!
+
+*/ 
+-- 4. Unique record check
+
+SELECT channel_name, COUNT(*) AS duplicate_count
+FROM view_uk_youtubers_2024
+GROUP BY channel_name
+HAVING COUNT(*) > 1
+
+```
