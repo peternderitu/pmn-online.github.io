@@ -122,5 +122,28 @@ The data schema is as follows
 2. Change column names to appropriate names
 3. Extract channel name from the NOMBRE column
 
+## Transform the data
 
+```sql
+SELECT CAST(SUBSTRING(NOMBRE,1,CHARINDEX('@',NOMBRE)-1) AS VARCHAR(100)) AS channel_name,
+	total_subscribers,
+	total_views,
+	total_videos
+	FROM youtube_data_from_python
+```
+## Create the SQL view
+
+```sql
+/*
+1. Remove unnecessary columns from the dataset
+2. Change column names to appropriate names
+3. Extract channel name from the NOMBRE column
+*/
+CREATE VIEW view_uk_youtubers_2024 AS
+	SELECT CAST(SUBSTRING(NOMBRE,1,CHARINDEX('@',NOMBRE)-1) AS VARCHAR(100)) AS channel_name,
+	total_subscribers,
+	total_views,
+	total_videos
+	FROM youtube_data_from_python
+```
 
