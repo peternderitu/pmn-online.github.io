@@ -285,12 +285,12 @@ RETURN subengagementrate
 - What are our findings?
 
 The key questions we want to answer are as below
- a. Who are the top 10 YouTubers with the most subscribers?
- b. Which 3 channels have uploaded the most videos?
- c. Which 3 channels have the most views?
- d. Which 3 channels have the highest average views per video?
- e. Which 3 channels have the highest views per subscriber ratio?
- f. Which 3 channels have the highest subscriber engagement rate per video uploaded?
+a. Who are the top 10 YouTubers with the most subscribers?
+b. Which 3 channels have uploaded the most videos?
+c. Which 3 channels have the most views?
+d. Which 3 channels have the highest average views per video?
+e. Which 3 channels have the highest views per subscriber ratio?
+f. Which 3 channels have the highest subscriber engagement rate per video uploaded?
 
 1. Who are the top 10 YouTubers with the most subscribers?
 
@@ -362,6 +362,7 @@ We'll prioritize analysing the metrics that are important in generating the expe
 Campaign idea = product placement
 
 a. NoCopyrightSounds
+
 - Average views per video = 6.92 million
 - Product cost = $5
 - Potential units sold per video = 6.92 million x 2% conversion rate = 138,400 units sold
@@ -370,6 +371,7 @@ a. NoCopyrightSounds
 - Net profit = $692,000 - $50,000 = $642,000
   
 b. DanTDM
+
 - Average views per video = 5.34 million
 - Product cost = $5
 - Potential units sold per video = 5.34 million x 2% conversion rate = 106,800 units sold
@@ -378,6 +380,7 @@ b. DanTDM
 - Net profit = $534,000 - $50,000 = $484,000
   
 c. Dan Rhodes
+
 - Average views per video = 11.15 million
 - Product cost = $5
 - Potential units sold per video = 11.15 million x 2% conversion rate = 223,000 units sold
@@ -386,3 +389,217 @@ c. Dan Rhodes
 - Net profit = $1,115,000 - $50,000 = $1,065,000
   
 Best option from category: Dan Rhodes
+
+# SQL Query
+
+```sql
+/*
+Write a cte to cast and round the calculated fields to -4 decimal places
+Declare the constant variables and perform the relevant calculations
+Select the 3 'NoCopyrightSounds', 'DanTDM', 'Dan Rhodes' and order the results by net_profit
+*/
+
+
+
+
+WITH avg_views_cte AS (
+SELECT
+	channel_name,
+	total_views,
+	total_videos,
+	total_subscribers,
+	ROUND(CAST(total_views AS float)/total_videos,-4) AS avg_views_per_video,
+	ROUND(CAST(total_views AS float)/total_videos,-4) * 0.02 AS potential_sales_per_video,
+	(ROUND(CAST(total_views AS float)/total_videos,-4) * 0.02) * 5 AS potential_revenue_per_video
+FROM view_uk_youtubers_2024
+)
+
+SELECT
+channel_name,
+avg_views_per_video,
+potential_sales_per_video,
+potential_revenue_per_video,
+potential_revenue_per_video - 50000 AS net_profit
+FROM avg_views_cte
+WHERE channel_name IN ('NoCopyrightSounds', 'DanTDM', 'Dan Rhodes')
+ORDER BY net_profit DESC
+```
+# Output
+![3 channels](/assets/images/3 channels.PNG)
+
+2. Youtubers with the most videos uploaded
+
+## Calculation breakdown
+
+Campaign idea = sponsored video series
+
+a. Jelly
+
+- Average views per video = 2,370,000
+- Product cost = $5
+- Potential units sold per video = 2,370,000 x 2% conversion rate = 47,400 units sold
+- Potential revenue per video = 47,400 x $5= $237,000
+- Campaign cost ($50,000) = $50,000
+- Net profit = $237,000 - $50,000 = $187,000
+  
+b. Yogscast
+
+- Average views per video = 710,000
+- Product cost = $5
+- Potential units sold per video = 710,000 x 2% conversion rate = 14,200 units sold
+- Potential revenue per video = 14,200 x $5= $71,000
+- Campaign cost ($50,000) = $50,000
+- Net profit = $71,000 - $50,000 = $21,000
+  
+c. GRM Daily
+
+- Average views per video = 510,000
+- Product cost = $5
+- Potential units sold per video = 510,000 x 2% conversion rate = 10,200 units sold
+- Potential revenue per video = 10,200 x $5= $51,000
+- Campaign cost ($50,000) = $50,000
+- Net profit = $51,000 - $50,000 = $1,000
+Best option from category: Jelly
+
+# SQL Code
+
+```sql
+/*
+Write a cte to cast and round the calculated fields to -4 decimal places
+Declare the constant variables and perform the relevant calculations
+Select the 3 'GRM Daily', 'Jelly', 'YOGSCAST Lewis & Simon' and order the results by net_profit
+*/
+
+
+
+
+WITH avg_views_cte AS (
+SELECT
+	channel_name,
+	total_views,
+	total_videos,
+	total_subscribers,
+	ROUND(CAST(total_views AS float)/total_videos,-4) AS avg_views_per_video,
+	ROUND(CAST(total_views AS float)/total_videos,-4) * 0.02 AS potential_sales_per_video,
+	(ROUND(CAST(total_views AS float)/total_videos,-4) * 0.02) * 5 AS potential_revenue_per_video
+FROM view_uk_youtubers_2024
+)
+
+SELECT
+channel_name,
+avg_views_per_video,
+potential_sales_per_video,
+potential_revenue_per_video,
+potential_revenue_per_video - 50000 AS net_profit
+FROM avg_views_cte
+WHERE channel_name IN ('GRM Daily', 'Jelly', 'YOGSCAST Lewis & Simon')
+ORDER BY net_profit DESC
+```
+# Output
+
+![3 channels top vids](/assets/images/top 3 channels total videos.PNG)
+
+3. Youtubers with most views
+
+## Calculation breakdown
+
+Campaign idea = Influencer marketing
+
+a. DanTDM
+
+- Average views per video = 5.34 million
+- Product cost = $5
+- Potential units sold per video = 5.34 million x 2% conversion rate = 106,800 units sold
+- Potential revenue per video = 106,800 x $5 = $534,000
+- Campaign cost (3-month contract) = $130,000
+- Net profit = $534,000 - $130,000 = $404,000
+b. Dan Rhodes
+
+- Average views per video = 11.15 million
+- Product cost = $5
+- Potential units sold per video = 11.15 million x 2% conversion rate = 223,000 units sold
+- Potential revenue per video = 223,000 x $5 = $1,115,000
+- Campaign cost (3-month contract) = $130,000
+- Net profit = $1,115,000 - $130,000 = $985,000
+c. Mister Max
+
+- Average views per video = 14.06 million
+- Product cost = $5
+- Potential units sold per video = 14.06 million x 2% conversion rate = 281,200 units sold
+- Potential revenue per video = 281,200 x $5 = $1,406,000
+- Campaign cost (3-month contract) = $130,000
+- Net profit = $1,406,000 - $130,000 = $1,276,000
+Best option from category: Mister Max
+
+# SQL Query
+
+```sql
+/*
+Write a cte to cast and round the calculated fields to -4 decimal places
+Declare the constant variables and perform the relevant calculations
+Select the 3 'Mister Max', 'DanTDM', 'Dan Rhodes' and order the results by net_profit
+*/
+
+
+
+
+WITH avg_views_cte AS (
+SELECT
+	channel_name,
+	total_views,
+	total_videos,
+	total_subscribers,
+	ROUND(CAST(total_views AS float)/total_videos,-4) AS avg_views_per_video,
+	ROUND(CAST(total_views AS float)/total_videos,-4) * 0.02 AS potential_sales_per_video,
+	(ROUND(CAST(total_views AS float)/total_videos,-4) * 0.02) * 5 AS potential_revenue_per_video
+FROM view_uk_youtubers_2024
+)
+
+SELECT
+channel_name,
+avg_views_per_video,
+potential_sales_per_video,
+potential_revenue_per_video,
+potential_revenue_per_video - 50000 AS net_profit
+FROM avg_views_cte
+WHERE channel_name IN ('Mister Max', 'DanTDM', 'Dan Rhodes')
+ORDER BY net_profit DESC
+```
+# Output
+
+![3 channels most views](/assets/images/3 channels most views.PNG)
+
+# Discovery
+- What did we learn?
+We discovered that
+
+1. NoCopyrightSOunds, Dan Rhodes and DanTDM are the channnels with the most subscribers in the UK
+2. Jelly, GRM Daily and YOGSCAST Lewis & Simon are the channels with the most videos uploaded
+3. DanTDM, Dan RHodes and Mister Max are the channels with the most views
+4. Entertainment channels are useful for broader reach, as the channels posting consistently on their platforms and generating the most engagement are focus on entertainment and music
+
+# Recommendations
+- What do you recommend based on the insights gathered?
+1. Dan Rhodes is the best YouTube channel to collaborate with if we want to maximize visbility because this channel has the most YouTube subscribers in the UK
+2. Although GRM Daily, Jelly and Yogcasts are regular publishers on YouTube, it may be worth considering whether collaborating with them with the current budget caps are worth the effort, as the potential return on investments is significantly lower compared to the other channels.
+3. Mister Max is the best YouTuber to collaborate with if we're interested in maximizing reach, but collaborating with DanTDM and Dan Rhodes may be better long-term options considering the fact that they both have large subscriber bases and are averaging significantly high number of views.
+4. The top 3 channels to form collaborations with are NoCopyrightSounds, DanTDM and Dan Rhodes based on this analysis, because they attract the most engagement on their channels consistently.
+   
+# Potential ROI
+- What ROI do we expect if we take this course of action?
+1. Setting up a collaboration deal with Dan Rhodes would make the client a net profit of $1,065,000 per video
+2. An influencer marketing contract with Mister Max can see the client generate a net profit of $1,276,000
+3. If we go with a product placement campaign with DanTDM, this could generate the client approximately $484,000 per video. If we advance with an influencer marketing campaign deal instead, this would make the client a one-off net profit of $404,000.
+4. NoCopyrightSounds could profit the client $642,000 per video too (which is worth considering)
+
+# Action plan
+- What course of action should we take and why?
+Based on our analysis, we beieve the best channel to advance a long-term partnership deal with to promote the client's products is the Dan Rhodes channel.
+
+We'll have conversations with the marketing client to forecast what they also expect from this collaboration. Once we observe we're hitting the expected milestones, we'll advance with potential partnerships with DanTDM, Mister Max and NoCopyrightSounds channels in the future.
+
+- What steps do we take to implement the recommended decisions effectively?
+1. Reach out to the teams behind each of these channels, starting with Dan Rhodes
+2. Negotiate contracts within the budgets allocated to each marketing campaign
+3. Kick off the campaigns and track each of their performances against the KPIs
+4. Review how the campaigns have gone, gather insights and optimize based on feedback from converted customers and each channel's audiences
