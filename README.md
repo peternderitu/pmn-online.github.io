@@ -4,6 +4,29 @@
 
 # Table of Contents
 - [Objective](#Objective)
+- [Data Source](#DataSource)
+- [Stages](#Stages)
+- [Design](#Design)
+  - [Tools](#Tools)
+- [Development](#development)
+Pseudocode
+Data Exploration
+Data Cleaning
+Transform the Data
+Create the SQL View
+Testing
+Data Quality Tests
+Visualization
+Results
+DAX Measures
+Analysis
+Findings
+Validation
+Discovery
+Recommendations
+Potential ROI
+Potential Courses of Actions
+Conclusion
 # Objective
 
 ## What is the key pain point?
