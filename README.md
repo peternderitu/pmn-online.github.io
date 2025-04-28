@@ -292,7 +292,7 @@ The key questions we want to answer are as below
  e. Which 3 channels have the highest views per subscriber ratio?
  f. Which 3 channels have the highest subscriber engagement rate per video uploaded?
 
-** 1. Who are the top 10 YouTubers with the most subscribers? **
+1. Who are the top 10 YouTubers with the most subscribers?
 
 | Channel_name | Total Subscribers(M) |
 | -------------|----------------------|
