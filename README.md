@@ -214,3 +214,4 @@ GROUP BY channel_name
 HAVING COUNT(*) > 1
 
 ```
+![duplicates](/assets/images/duplicatechecks.PNG)
