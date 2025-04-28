@@ -227,7 +227,7 @@ HAVING COUNT(*) > 1
 
 1. Total Subscribers(M)
 
-```
+```dax
 Total Subscribers(M) =
 VAR million = 1000000
 VAR sumofsubs = SUM(view_uk_youtubers_2024[total_subscribers])
