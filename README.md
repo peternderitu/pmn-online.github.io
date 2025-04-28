@@ -285,12 +285,12 @@ RETURN subengagementrate
 - What are our findings?
 
 The key questions we want to answer are as below
-	1. Who are the top 10 YouTubers with the most subscribers?
-	2. Which 3 channels have uploaded the most videos?
-	3. Which 3 channels have the most views?
-	4. Which 3 channels have the highest average views per video?
-	5. Which 3 channels have the highest views per subscriber ratio?
-	6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
+ 1. Who are the top 10 YouTubers with the most subscribers?
+ 2. Which 3 channels have uploaded the most videos?
+ 3. Which 3 channels have the most views?
+ 4. Which 3 channels have the highest average views per video?
+ 5. Which 3 channels have the highest views per subscriber ratio?
+ 6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
 
 1. Who are the top 10 YouTubers with the most subscribers?
 
