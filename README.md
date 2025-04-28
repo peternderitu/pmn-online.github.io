@@ -215,3 +215,10 @@ HAVING COUNT(*) > 1
 
 ```
 ![duplicates](/assets/images/duplicatechecks.PNG)
+
+# Visualizations
+
+## Results
+- What does the dashboard look like?
+  
+![power bi](/assets/images/Animation.gif)
