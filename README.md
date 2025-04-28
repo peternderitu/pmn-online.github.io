@@ -234,3 +234,60 @@ VAR sumofsubs = SUM(view_uk_youtubers_2024[total_subscribers])
 VAR totalsubscribers = DIVIDE(sumofsubs,million,BLANK())
 RETURN totalsubscribers
 ```
+2. Total Views(B)
+
+```dax
+Total Views(B) =
+VAR billions = 1000000000
+VAR sumofviews = SUM(view_uk_youtubers_2024[total_views])
+VAR totalviews = DIVIDE(sumofviews,billions,BLANK())
+RETURN totalviews
+```
+3. Total Videos
+
+```dax
+Total Videos =
+VAR totalvideos = SUM(view_uk_youtubers_2024[total_videos])
+RETURN totalvideos
+```
+4. Average Views per Subscriber
+
+```dax
+Avg views per subscriber =
+VAR sumofviews = SUM(view_uk_youtubers_2024[total_views])
+VAR sumofsubs = SUM(view_uk_youtubers_2024[total_subscribers])
+VAR avgviewspersub = DIVIDE(sumofviews,sumofsubs,BLANK())
+RETURN avgviewspersub
+```
+5. Average Views per Video
+
+```dax
+Avg Views per Video(M) =
+VAR sumofviews = SUM(view_uk_youtubers_2024[total_views])
+VAR sumofvideos = SUM(view_uk_youtubers_2024[total_videos])
+VAR avgviewpervideo = DIVIDE(sumofviews,sumofvideos,BLANK())
+VAR finalavgviewpervideo = DIVIDE(avgviewpervideo,1000000,BLANK())
+RETURN finalavgviewpervideo
+```
+6. Subscriber Engagement Rate
+
+```dax
+Subs engangement rate =
+VAR sumofsubs = SUM(view_uk_youtubers_2024[total_subscribers])
+VAR sumofvideos = SUM(view_uk_youtubers_2024[total_videos])
+VAR subengagementrate = DIVIDE(sumofsubs,sumofvideos,BLANK())
+RETURN subengagementrate
+```
+
+# Analysis
+
+# Findings
+- What are our findings?
+
+The key questions we want to answer are as below
+1. Who are the top 10 YouTubers with the most subscribers?
+2. Which 3 channels have uploaded the most videos?
+3. Which 3 channels have the most views?
+4. Which 3 channels have the highest average views per video?
+5. Which 3 channels have the highest views per subscriber ratio?
+6. Which 3 channels have the highest subscriber engagement rate per video uploaded?
