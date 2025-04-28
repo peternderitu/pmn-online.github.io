@@ -222,3 +222,15 @@ HAVING COUNT(*) > 1
 - What does the dashboard look like?
   
 ![power bi](/assets/images/Animation.gif)
+
+# DAX Measures
+
+1. Total Subscribers(M)
+
+```
+Total Subscribers(M) =
+VAR million = 1000000
+VAR sumofsubs = SUM(view_uk_youtubers_2024[total_subscribers])
+VAR totalsubscribers = DIVIDE(sumofsubs,million,BLANK())
+RETURN totalsubscribers
+```
