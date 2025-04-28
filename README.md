@@ -3,30 +3,28 @@
 ![headerimage](/assets/images/Dataportfolioheader.png)
 
 # Table of Contents
-- [Objective](#Objective)
-- [Data Source](#DataSource)
-- [Stages](#Stages)
-- [Design](#Design)
-  - [Tools](#Tools)
+- [Objective](#objective)
+- [Data Source](#data-source-1)
+- [Stages](#stages)
+- [Design](#design)
+  - [Tools](#tools)
 - [Development](#development)
-Pseudocode
-Data Exploration
-Data Cleaning
-Transform the Data
-Create the SQL View
-Testing
-Data Quality Tests
-Visualization
-Results
-DAX Measures
-Analysis
-Findings
-Validation
-Discovery
-Recommendations
-Potential ROI
-Potential Courses of Actions
-Conclusion
+ - [Data Exploration](#data-exploration-notes)
+ - [Data Cleaning](#data-cleaning)
+ - [Transform the Data](#transform-the-data)
+ - [Create the SQL View](#create-the-sql-view)
+- [Testing](#testing)
+- [Visualization](#visualizations)
+ - [Results](#results)
+ - [DAX Measures](#dax-measures)
+- [Analysis](#analysis)
+ - [Findings](#findings)
+ - [Validation](#validation)
+ - [Discovery](#discovery)
+- [Recommendations](#recommendations)
+ - [Potential ROI](#potential-roi)
+- [Conclusion](#action-plan)
+  
 # Objective
 
 ## What is the key pain point?
@@ -113,7 +111,7 @@ For now, these are some of the questions we need to answer, this may change as w
 3. The language of the column headers are different we may need to change the nomenclature
 4. There are unnecessary columns that we may need to remove from the dataset during cleaning
 
-# Data Cleaning
+## Data Cleaning
 - What do we expect clean data to look like?(What it should contain and what constraints apply to it)
 
 The aim is to refine our data for analysis.
@@ -246,7 +244,7 @@ HAVING COUNT(*) > 1
   
 ![power bi](/assets/images/Animation.gif)
 
-# DAX Measures
+## DAX Measures
 
 1. Total Subscribers(M)
 
@@ -304,7 +302,7 @@ RETURN subengagementrate
 
 # Analysis
 
-# Findings
+## Findings
 - What are our findings?
 
 The key questions we want to answer are as below
@@ -370,13 +368,13 @@ f. Which 3 channels have the highest subscriber engagement rate per video upload
 | Jessie J | 110416.67 |
 | Dua Lipa | 104954.95 |
 
-# To Note
+### To Note
 We'll prioritize analysing the metrics that are important in generating the expected ROI for our marketing client, which are the Youtube channels with the most:-
 - subscribers
 - total views
 - videos uploaded
 
-# Validation
+## Validation
 
 1. Youtubers with the most subscribers
 
